@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>control_lib_ros2</name>
+  <version>0.1.0</version>
+  <description>A ROS 2 package demonstrating usage of MyControlLib.</description>
+
+  <maintainer email="marvin@swiss.ch">Your Name</maintainer>
+  <license>Apache-2.0</license>
+  
+  <!-- Build tool -->
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <!-- Dependencies needed at compile time -->
+  <build_depend>rclcpp</build_depend>
+
+  <!-- Dependencies needed at runtime -->
+  <exec_depend>rclcpp</exec_depend>
+
+  <!-- Our external library -->
+  <!-- If MyControlLib is recognized as a separate package, you can declare it as well -->
+  <!-- <depend>MyControlLib</depend> -->
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+
