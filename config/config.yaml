@@ -1,21 +1,21 @@
 test_cycle:
   delta_t: 0.1            # Control loop / timer period in seconds
   time_per_segment: 5.0    # How long to hold each target [s]
-  targets: [-1, 1, 10, -20, -3]
+  targets: [-1, 1, -1, 0.8,-0.8, -2, 2, -1, 1, -2, 2, 7]
   nr_inputs: 1
   nr_outputs: 1
 
 model_lti_system:
   A:
-  - [0.4, -0.03, -0.08]
+  - [0.4, -0.03, -0.0]
   - [-0.04 , 0.3, -0.06]
-  - [-0.08, -1.4, 0.45]
+  - [-0.08, 0.0 , 0.45]
   B:
-    - [0.01]
+    - [0.00]
     - [0.03]
-    - [0.08]
+    - [0.0]
   C:
-    - [-8.19, 0.2, 3.115]
+    - [-1, 0.2, 3.11]
   D:
     - [0.0]
 
@@ -29,18 +29,18 @@ control_system:
 pid_controller:
   pid_constants:
     "[-30.0,0.0]":
-      kp: 40
-      ki: 0
-      kd: 0.1
+      kp: 90
+      ki: 20
+      kd: 0
       kdd: 0.0
     "(0.0,20.0)":
-      kp: 30
-      ki: 0
-      kd: 0.15
+      kp: 90
+      ki: 5
+      kd: 0
       kdd: 0.0
     "[20.0,30.0]":
       kp: 10
       ki: 0
       kd: 0.2
       kdd: 0.05
-  integral_limit: 100
+  integral_limit: 10000

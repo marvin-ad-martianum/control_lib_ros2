@@ -22,10 +22,10 @@ public:
 
 protected:
     // Handle inputs
-    void onInputReceived(const std_msgs::msg::Float64MultiArray::SharedPtr msg) override
+    /**void onInputReceived(const std_msgs::msg::Float64MultiArray::SharedPtr msg) override
     {
 
-    }
+    }**/
 
     // Perform PID control computation
     void computeControlClean(
@@ -69,17 +69,19 @@ protected:
                 targets[i], inputs[i], derivatives[i], second_derivatives[i]);
 
             output_msg.data[i] = control;
+            auto error = pid_supervisor_.getErrorP();
 
             debug_stream << "Target[" << i << "]: " << targets[i]
                          << ", Input[" << i << "]: " << inputs[i]
                          << ", Derivative[" << i << "]: " << derivatives[i]
                          << ", Second Derivative[" << i << "]: " << second_derivatives[i]
+                         << ", Error[" << i << "]: " << error
                          << ", Control[" << i << "]: " << control << "\n";
         }
 
         pub_output_->publish(output_msg);
 
-        RCLCPP_INFO(this->get_logger(), "PID Control Output Published.");
+        RCLCPP_INFO(this->get_logger(), "PID Control Input Published.");
         RCLCPP_INFO(this->get_logger(), "%s", debug_stream.str().c_str());
 
     }

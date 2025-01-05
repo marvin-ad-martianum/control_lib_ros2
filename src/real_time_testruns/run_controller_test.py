@@ -168,16 +168,16 @@ class TestCycleNode(Node):
         
         # Subplot 1: Measured vs Desired
         plt.subplot(2, 1, 1)
-        plt.plot(times, measured, label='Measured (control_input)')
+        plt.plot(times, measured, label='Measured (VALUE)')
         plt.plot(times, desired, label='Desired (target)')
         plt.xlabel('Time [s]')
         plt.ylabel('Value')
-        plt.title('Control Input vs. Target')
+        plt.title('Measured vs. Target')
         plt.legend()
         
         # Subplot 2: Error
         plt.subplot(2, 1, 2)
-        plt.plot(times, errors, label='Error (target - input)')
+        plt.plot(times, errors, label='Error (target - measured)')
         plt.xlabel('Time [s]')
         plt.ylabel('Error')
         plt.title('Error Over Time')
@@ -188,7 +188,7 @@ class TestCycleNode(Node):
         self.get_logger().info("Saved plot to 'test_cycle_results.png'.")
         
         # Optionally display the figure
-        plt.show()
+        #plt.show()
 
 
 def main(args=None):

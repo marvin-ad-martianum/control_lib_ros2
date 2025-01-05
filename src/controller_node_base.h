@@ -151,10 +151,10 @@ private:
     void controlLoopCallback()
     {
         // Example: retrieve the mean of the last 5 samples
-        std::vector<double>  lastInputs = inputs_buffer_.get_snapshot(1);
-        std::vector<double>  lastDerivs = derivatives_buffer_.get_snapshot(1);
-        std::vector<double>  lastSecondDerivs = second_derivatives_buffer_.get_snapshot(1);
-        std::vector<double>  lastTargets = targets_buffer_.get_snapshot(1);
+        std::vector<double>  lastInputs = inputs_buffer_.get_snapshot(5);
+        std::vector<double>  lastDerivs = derivatives_buffer_.get_snapshot(5);
+        std::vector<double>  lastSecondDerivs = second_derivatives_buffer_.get_snapshot(5);
+        std::vector<double>  lastTargets = targets_buffer_.get_snapshot(5);
 
         // Call the derived class's computeControl with these arrays
         computeControl(lastInputs, lastDerivs, lastSecondDerivs, lastTargets);
